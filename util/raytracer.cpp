@@ -1,5 +1,6 @@
 #include "raytracer.h"
 #include <qgl.h>
+#include <gl/GLU.h>
 
 #include <iostream>
 using namespace std;

@@ -1,5 +1,6 @@
 #include "camera.h"
 #include <qgl.h>
+#include <gl/GLU.h>
 
 void Camera::apply() const
 {

@@ -4,6 +4,7 @@
 #include "meshsculpter.h"
 #include "jointrotation.h"
 #include <QWheelEvent>
+#include <gl/GLU.h>
 
 #define PLANE_SIZE 10
 #define CURSOR_SIZE 20

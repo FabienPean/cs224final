@@ -1,6 +1,7 @@
 #include "geometry.h"
 #include "vector.h"
 #include <qgl.h>
+#include <gl/GLU.h>
 
 GLUquadric *quadric = NULL;
 const float cubeVertices[8 * 3] =

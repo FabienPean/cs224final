@@ -1,5 +1,6 @@
 #include "selectionrecorder.h"
 #include <qgl.h>
+#include <gl/GLU.h>
 
 SelectionRecorder::SelectionRecorder()
 {

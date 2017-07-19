@@ -1,6 +1,7 @@
 #ifndef TOOLS_H
 #define TOOLS_H
 
+#include<QtCore/qobject.h>
 #include "camera.h"
 #include "raytracer.h"
 #include "mesh.h"

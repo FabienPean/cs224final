@@ -1,5 +1,6 @@
 #include "texture.h"
 #define GL_GLEXT_PROTOTYPES
+#include <GL/glew.h>
 #include <qgl.h>
 #include <assert.h>
 #include <iostream>
