@@ -36,7 +36,8 @@ void Curvature::computeCurvatures(const Mesh &mesh) {
     QVector<Matrix3> DNormal(nVerts);
     QVector<Matrix3> WWTrn(nVerts);
     QVector<Matrix3> DWTrn(nVerts);
-    bool DWTrnZero[nVerts];
+    //bool DWTrnZero[nVerts];
+    std::vector<bool> DWTrnZero(nVerts);
 
     int row, col;
     foreach (const Quad &q, mesh.quads) {
