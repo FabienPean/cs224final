@@ -5,6 +5,11 @@ FORMS    += mainwindow.ui
 INCLUDEPATH += ui doc util b_mesh
 DEPENDPATH += ui doc util b_mesh
 
+INCLUDEPATH += $$PWD/../../sdk/vcpkg/installed/x64-windows/include
+DEPENDPATH += $$PWD/../../sdk/vcpkg/installed/x64-windows/lib $$PWD/../../sdk/vcpkg/installed/x64-windows/bin
+LIBS += -lglu32 -L$$PWD/../../sdk/vcpkg/installed/x64-windows/lib/ -L$$PWD/../../sdk/vcpkg/installed/x64-windows/bin/ -lglew32
+LIBS += -lopengl32
+
 # NDEBUG disables asserts
 release {
     DEFINES += NDEBUG
@@ -127,3 +132,4 @@ SOURCES += \
     util/wm5/LibMathematics/Rational/Wm5IVector2.cpp \
     util/wm5/LibMathematics/Rational/Wm5IVector3.cpp \
     util/wm5/LibMathematics/Wm5MathematicsPCH.cpp
+
