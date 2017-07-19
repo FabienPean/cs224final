@@ -201,16 +201,16 @@ static void addSegmentedSweep(Mesh &mesh,
         }
 
         // generate the quads
-        int i = mesh.vertices.count() - 4;
-        mesh.quads += Quad(i, i + 1, i1, i0);
-        mesh.quads += Quad(i + 1, i + 2, i2, i1);
-        mesh.quads += Quad(i + 2, i + 3, i3, i2);
-        mesh.quads += Quad(i + 3, i, i0, i3);
+        int iq = mesh.vertices.count() - 4;
+        mesh.quads += Quad(iq, iq + 1, i1, i0);
+        mesh.quads += Quad(iq + 1, iq + 2, i2, i1);
+        mesh.quads += Quad(iq + 2, iq + 3, i3, i2);
+        mesh.quads += Quad(iq + 3, iq, i0, i3);
 
-        i0 = i;
-        i1 = i + 1;
-        i2 = i + 2;
-        i3 = i + 3;
+        i0 = iq;
+        i1 = iq + 1;
+        i2 = iq + 2;
+        i3 = iq + 3;
     }
 }
 
@@ -361,21 +361,21 @@ static void makeJoint(Mesh &mesh, int ballIndex, ResultQuad &result)
             continue;
         }
 
-        Triangle tri(indexForVector[v0], indexForVector[v1], indexForVector[v2]);
+        Triangle triAdded(indexForVector[v0], indexForVector[v1], indexForVector[v2]);
         bool allOnSameQuad = false;
 
         // is the triangle all on the same quad?
         foreach (const Quad &quad, quads)
         {
-            if (quad.a.index != tri.a.index && quad.b.index != tri.a.index && quad.c.index != tri.a.index && quad.d.index != tri.a.index) continue;
-            if (quad.a.index != tri.b.index && quad.b.index != tri.b.index && quad.c.index != tri.b.index && quad.d.index != tri.b.index) continue;
-            if (quad.a.index != tri.c.index && quad.b.index != tri.c.index && quad.c.index != tri.c.index && quad.d.index != tri.c.index) continue;
+            if (quad.a.index != triAdded.a.index && quad.b.index != triAdded.a.index && quad.c.index != triAdded.a.index && quad.d.index != triAdded.a.index) continue;
+            if (quad.a.index != triAdded.b.index && quad.b.index != triAdded.b.index && quad.c.index != triAdded.b.index && quad.d.index != triAdded.b.index) continue;
+            if (quad.a.index != triAdded.c.index && quad.b.index != triAdded.c.index && quad.c.index != triAdded.c.index && quad.d.index != triAdded.c.index) continue;
             allOnSameQuad = true;
             break;
         }
 
         // only add the triangle if it won't be inside the mesh
-        if (!allOnSameQuad) mesh.triangles += tri;
+        if (!allOnSameQuad) mesh.triangles.push_back(triAdded);
     }
 }
 
